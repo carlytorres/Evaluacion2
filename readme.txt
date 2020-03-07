@@ -13,12 +13,12 @@ select count(idPrestacionServicio) from prestación_servicio between 2018-10-01 
 
 b.-Mostrar la cantidad total de prestaciones realizadas agrupadas por idVehiculo.
 
-select count(idPrestacionServicio) from prestación_servicio group by idVehiculo
+select idVehiculo, count(idPrestacionServicio) from prestación_servicio group by idVehiculo
 
 c.- Mostrar los vehículos con la menor cantidad de prestaciones de servicios realizados.
 
-select idVehiculo from prestación_servicio where ()
-
+select idVehiculo,count(*) as Prestaciones from prestacion_servicio group by idVehiculo having COUNT(*) = 
+( select MIN(contador) from ( select idVehiculo, count(*) as contador from prestacion_servicio GROUP BY idVehiculo) T )
 
 2.-Crear con DDL unatabla empleado que contenga losiguiente:
 
@@ -41,4 +41,5 @@ PRIMARY KEY (idEmpleado)
 FOREIGN KEY (idDepartamento) REFERENCES departamento(idDepartamento) 
 )
 
-3.-
+
+
